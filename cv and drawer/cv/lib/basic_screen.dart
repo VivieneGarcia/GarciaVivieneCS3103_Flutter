@@ -45,8 +45,7 @@ class BasicScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const BasicScreen()));
+                    Navigator.of(context).pop();
                   },
                 ),
                 const Divider(),
@@ -57,8 +56,10 @@ class BasicScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const EducationPage()));
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                          builder: (context) => const EducationPage()),
+                    );
                   },
                 ),
                 const Divider(),

@@ -65,8 +65,7 @@ class EducationPage extends StatelessWidget {
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const EducationPage()));
+                    Navigator.of(context).pop();
                   },
                 ),
                 const Divider(),
