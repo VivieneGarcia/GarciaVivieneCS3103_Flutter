@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'basic_screen.dart'; // Import the new file
+import 'login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,10 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: BasicScreen(),
+      home: LoginPage(),
     );
   }
 }
