@@ -1,6 +1,6 @@
 # 📱 IT 331 Application Development and Emerging Technologies 
  Exercises and Activities
-## 📸 Pics
+## 📸 Screenshots
 <p align="center">
   <img src="https://github.com/VivieneGarcia/Flutter/blob/main/Screenshots/first.png" \ alt="Lab 1" width="20%">
   <br>
