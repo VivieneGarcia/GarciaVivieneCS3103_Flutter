@@ -1,6 +1,6 @@
 # 📱 IT 331: Application Development and Emerging Technologies
 Section: **CS3103**
-## ❗Activity 2 / Quiz: Login Credentials
+## ❗Quiz: Login Credentials
 
 | Option | Username | Password |
 |--------|----------|----------|
@@ -24,7 +24,7 @@ Section: **CS3103**
   <img src="https://github.com/VivieneGarcia/GarciaVivieneCS3103_FlutterActs/blob/main/Screenshots/cv_change.png" width="20%">
   <img src="https://github.com/VivieneGarcia/GarciaVivieneCS3103_FlutterActs/blob/main/Screenshots/cv_changed.png" width="20%">
   <br>
-  <em>Quiz: Login Page and Change PFP (Update Act 2)</em>
+  <em>Quiz: Login Page and Change PFP (Updated Act 2)</em>
   <br><br>
 </p>
 
