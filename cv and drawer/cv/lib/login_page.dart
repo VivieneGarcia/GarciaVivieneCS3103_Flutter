@@ -14,12 +14,34 @@ class LoginPage extends StatelessWidget {
       'name': 'Viviene Garcia',
       'email': 'vivs@gmail.com',
       'number': '0918-456-1232',
+      'education': {
+        'elementary': 'SBC',
+        'highschool': 'SBC',
+        'seniorHigh': 'STI Batangas',
+        'college': 'BSU (Current)',
+      },
+      'skills': [
+        'Drawing',
+        'Graphic Design',
+        'Sleeping',
+      ],
     },
     'second': {
       'password': 'pass2',
       'name': 'Grizzly Bear',
       'email': 'grizzy@gmail.com',
       'number': '0918-654-3212',
+      'education': {
+        'elementary': 'Bear Elementary',
+        'highschool': 'Forest High',
+        'seniorHigh': 'Bear Academy',
+        'college': 'Bear State University',
+      },
+      'skills': [
+        'Problem Solving',
+        'Forest Survival Techniques',
+        'Leadership',
+      ],
     },
   };
 
@@ -38,6 +60,8 @@ class LoginPage extends StatelessWidget {
             name: validCredentials[username]!['name'],
             email: validCredentials[username]!['email'],
             number: validCredentials[username]!['number'],
+            education: validCredentials[username]!['education'],
+            skills: validCredentials[username]!['skills'],
           ),
         ),
       );

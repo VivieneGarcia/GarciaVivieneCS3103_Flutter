@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 class EducationPage extends StatelessWidget {
   final String name;
   final Uint8List? imageBytes;
+  final Map<String, String> education; // Accept education details
 
   const EducationPage({
     super.key,
     required this.name,
     required this.imageBytes,
+    required this.education,
   });
 
   @override
@@ -20,7 +22,7 @@ class EducationPage extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 65,
-              backgroundColor: const Color.fromARGB(255, 180, 180, 180),
+              backgroundColor: Colors.grey,
               backgroundImage:
                   imageBytes != null ? MemoryImage(imageBytes!) : null,
               child: imageBytes == null
@@ -35,6 +37,15 @@ class EducationPage extends StatelessWidget {
               "${name}'s Education",
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
+            const SizedBox(height: 20),
+            Text("Elementary: ${education['elementary']}",
+                style: const TextStyle(fontSize: 18)),
+            Text("High School: ${education['highschool']}",
+                style: const TextStyle(fontSize: 18)),
+            Text("Senior High: ${education['seniorHigh']}",
+                style: const TextStyle(fontSize: 18)),
+            Text("College: ${education['college']}",
+                style: const TextStyle(fontSize: 18)),
           ],
         ),
       ),

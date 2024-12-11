@@ -3,17 +3,22 @@ import 'dart:typed_data';
 import 'login_page.dart';
 import 'immutable_widget.dart';
 import 'pages/education_page.dart';
+import 'pages/skills_page.dart';
 
 class BasicScreen extends StatefulWidget {
   final String name;
   final String email;
   final String number;
+  final Map<String, String> education;
+  final List<String> skills; // Add skills as a parameter
 
   const BasicScreen({
     super.key,
     required this.name,
     required this.email,
     required this.number,
+    required this.education,
+    required this.skills, // Initialize skills
   });
 
   @override
@@ -24,8 +29,10 @@ class _BasicScreenState extends State<BasicScreen> {
   late String name;
   late String email;
   late String number;
-  Uint8List? imageBytes; // Profile picture state
-  String currentPage = 'Profile'; // Track the current page
+  late Map<String, String> education;
+  late List<String> skills; // Store skills data locally
+  Uint8List? imageBytes;
+  String currentPage = 'Profile';
 
   @override
   void initState() {
@@ -33,6 +40,8 @@ class _BasicScreenState extends State<BasicScreen> {
     name = widget.name;
     email = widget.email;
     number = widget.number;
+    education = widget.education;
+    skills = widget.skills; // Initialize skills
   }
 
   // Callback to update the profile picture
@@ -43,12 +52,18 @@ class _BasicScreenState extends State<BasicScreen> {
   }
 
   Widget _buildBody() {
-    // Dynamically return the body based on the selected page
     switch (currentPage) {
       case 'Education':
         return EducationPage(
           name: name,
+          education: education, // Pass education details
           imageBytes: imageBytes,
+        );
+      case 'Skills':
+        return SkillsPage(
+          name: name,
+          imageBytes: imageBytes,
+          skills: skills, // Pass skills dynamically
         );
       case 'Profile':
       default:
@@ -57,7 +72,11 @@ class _BasicScreenState extends State<BasicScreen> {
           email: email,
           number: number,
           imageBytes: imageBytes,
-          onImageUpdate: updateProfileImage,
+          onImageUpdate: (newImage) {
+            setState(() {
+              imageBytes = newImage;
+            });
+          },
         );
     }
   }
@@ -68,11 +87,14 @@ class _BasicScreenState extends State<BasicScreen> {
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        title: const Text("My CV",
-            style: TextStyle(
-                color: Color.fromARGB(255, 255, 255, 255),
-                fontSize: 20,
-                fontWeight: FontWeight.bold)),
+        title: const Text(
+          "My CV",
+          style: TextStyle(
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         elevation: 0,
         actions: [
           IconButton(
@@ -130,9 +152,15 @@ class _BasicScreenState extends State<BasicScreen> {
                 },
               ),
               const Divider(),
-              const ListTile(
-                leading: Icon(Icons.ads_click_sharp),
-                title: Text("Skills", style: TextStyle(fontSize: 20)),
+              ListTile(
+                leading: const Icon(Icons.ads_click_sharp),
+                title: const Text("Skills", style: TextStyle(fontSize: 20)),
+                onTap: () {
+                  setState(() {
+                    currentPage = 'Skills';
+                  });
+                  Navigator.of(context).pop();
+                },
               ),
               const Divider(),
               const ListTile(
