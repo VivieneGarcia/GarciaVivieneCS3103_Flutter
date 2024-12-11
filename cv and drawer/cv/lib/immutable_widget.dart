@@ -9,6 +9,7 @@ class ImmutableWidget extends StatelessWidget {
   final String name;
   final String email;
   final String number;
+  final String motto;
   final Uint8List? imageBytes;
   final Function(Uint8List?) onImageUpdate;
 
@@ -17,6 +18,7 @@ class ImmutableWidget extends StatelessWidget {
     required this.name,
     required this.email,
     required this.number,
+    required this.motto,
     required this.imageBytes,
     required this.onImageUpdate,
   });
@@ -116,7 +118,7 @@ class ImmutableWidget extends StatelessWidget {
               ),
               child: Container(
                 padding: EdgeInsets.all(10),
-                child: const Text('Draw for a living.',
+                child: Text(motto,
                     style: TextStyle(
                       fontSize: 15,
                     )),

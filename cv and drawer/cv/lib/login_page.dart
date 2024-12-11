@@ -14,9 +14,10 @@ class LoginPage extends StatelessWidget {
       'name': 'Viviene Garcia',
       'email': 'vivs@gmail.com',
       'number': '0918-456-1232',
+      'motto': 'Draw for a living',
       'education': {
-        'elementary': 'SBC',
-        'highschool': 'SBC',
+        'elementary': 'SBC Batangas',
+        'highschool': 'SBC Batangas',
         'seniorHigh': 'STI Batangas',
         'college': 'BSU (Current)',
       },
@@ -25,12 +26,21 @@ class LoginPage extends StatelessWidget {
         'Graphic Design',
         'Sleeping',
       ],
+      'projects': [
+        'Karipas:Batangas City Jeepney Transportation Web Application (Group Project)',
+        'Pedagohiya: Classroom Management Application(Group Project)',
+        'Invertrix: Visual Inverse Cipher Web Application (Group Project)',
+      ],
+      'experience': [
+        'Digital Illustrator (Freelance): 2021/2024',
+      ],
     },
     'second': {
       'password': 'pass2',
       'name': 'Grizzly Bear',
       'email': 'grizzy@gmail.com',
       'number': '0918-654-3212',
+      'motto': 'Eat a lot of stuff',
       'education': {
         'elementary': 'Bear Elementary',
         'highschool': 'Forest High',
@@ -41,6 +51,16 @@ class LoginPage extends StatelessWidget {
         'Problem Solving',
         'Forest Survival Techniques',
         'Leadership',
+      ],
+      'projects': [
+        'House of the woods',
+        'Chikitita',
+        'I like to Play Poker: Coding System',
+      ],
+      'experience': [
+        'Running 300miles',
+        'Opening a Juicebox',
+        'Playing Youtube',
       ],
     },
   };
@@ -60,8 +80,11 @@ class LoginPage extends StatelessWidget {
             name: validCredentials[username]!['name'],
             email: validCredentials[username]!['email'],
             number: validCredentials[username]!['number'],
+            motto: validCredentials[username]!['motto'],
             education: validCredentials[username]!['education'],
             skills: validCredentials[username]!['skills'],
+            projects: validCredentials[username]!['projects'],
+            experience: validCredentials[username]!['experience'],
           ),
         ),
       );

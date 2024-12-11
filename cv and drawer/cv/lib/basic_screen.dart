@@ -1,24 +1,29 @@
+import 'package:cv/pages/pages.dart';
 import 'package:flutter/material.dart';
 import 'dart:typed_data';
 import 'login_page.dart';
 import 'immutable_widget.dart';
-import 'pages/education_page.dart';
-import 'pages/skills_page.dart';
 
 class BasicScreen extends StatefulWidget {
   final String name;
   final String email;
   final String number;
+  final String motto;
   final Map<String, String> education;
-  final List<String> skills; // Add skills as a parameter
+  final List<String> skills;
+  final List<String> projects;
+  final List<String> experience;
 
   const BasicScreen({
     super.key,
     required this.name,
     required this.email,
     required this.number,
+    required this.motto,
     required this.education,
-    required this.skills, // Initialize skills
+    required this.skills,
+    required this.projects,
+    required this.experience,
   });
 
   @override
@@ -29,8 +34,11 @@ class _BasicScreenState extends State<BasicScreen> {
   late String name;
   late String email;
   late String number;
+  late String motto;
   late Map<String, String> education;
-  late List<String> skills; // Store skills data locally
+  late List<String> skills;
+  late List<String> projects;
+  late List<String> experience;
   Uint8List? imageBytes;
   String currentPage = 'Profile';
 
@@ -40,11 +48,13 @@ class _BasicScreenState extends State<BasicScreen> {
     name = widget.name;
     email = widget.email;
     number = widget.number;
+    motto = widget.motto;
     education = widget.education;
-    skills = widget.skills; // Initialize skills
+    skills = widget.skills;
+    projects = widget.projects;
+    experience = widget.experience;
   }
 
-  // Callback to update the profile picture
   void updateProfileImage(Uint8List? newImage) {
     setState(() {
       imageBytes = newImage;
@@ -56,14 +66,26 @@ class _BasicScreenState extends State<BasicScreen> {
       case 'Education':
         return EducationPage(
           name: name,
-          education: education, // Pass education details
+          education: education,
           imageBytes: imageBytes,
         );
       case 'Skills':
         return SkillsPage(
           name: name,
           imageBytes: imageBytes,
-          skills: skills, // Pass skills dynamically
+          skills: skills,
+        );
+      case 'Projects':
+        return ProjectsPage(
+          name: name,
+          imageBytes: imageBytes,
+          projects: projects,
+        );
+      case 'Experience':
+        return ExperiencePage(
+          name: name,
+          imageBytes: imageBytes,
+          experience: experience,
         );
       case 'Profile':
       default:
@@ -71,12 +93,9 @@ class _BasicScreenState extends State<BasicScreen> {
           name: name,
           email: email,
           number: number,
+          motto: motto,
           imageBytes: imageBytes,
-          onImageUpdate: (newImage) {
-            setState(() {
-              imageBytes = newImage;
-            });
-          },
+          onImageUpdate: updateProfileImage,
         );
     }
   }
@@ -100,7 +119,6 @@ class _BasicScreenState extends State<BasicScreen> {
           IconButton(
             icon: const Icon(Icons.logout, color: Colors.white),
             onPressed: () {
-              // Navigate back to LoginPage
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => LoginPage()),
               );
@@ -108,7 +126,7 @@ class _BasicScreenState extends State<BasicScreen> {
           ),
         ],
       ),
-      body: _buildBody(), // Call the function to get the current page's body
+      body: _buildBody(),
       drawer: Drawer(
         width: MediaQuery.of(context).size.width * 0.8,
         child: Container(
@@ -132,23 +150,20 @@ class _BasicScreenState extends State<BasicScreen> {
                 title: const Text("Profile", style: TextStyle(fontSize: 20)),
                 onTap: () {
                   setState(() {
-                    currentPage = 'Profile'; // Update the current page
+                    currentPage = 'Profile';
                   });
-                  Navigator.of(context).pop(); // Close the drawer
+                  Navigator.of(context).pop();
                 },
               ),
               const Divider(),
               ListTile(
                 leading: const Icon(Icons.grade),
-                title: const Text(
-                  "Education",
-                  style: TextStyle(fontSize: 20),
-                ),
+                title: const Text("Education", style: TextStyle(fontSize: 20)),
                 onTap: () {
                   setState(() {
-                    currentPage = 'Education'; // Update the current page
+                    currentPage = 'Education';
                   });
-                  Navigator.of(context).pop(); // Close the drawer
+                  Navigator.of(context).pop();
                 },
               ),
               const Divider(),
@@ -163,14 +178,26 @@ class _BasicScreenState extends State<BasicScreen> {
                 },
               ),
               const Divider(),
-              const ListTile(
-                leading: Icon(Icons.brush),
-                title: Text("Projects", style: TextStyle(fontSize: 20)),
+              ListTile(
+                leading: const Icon(Icons.brush),
+                title: const Text("Projects", style: TextStyle(fontSize: 20)),
+                onTap: () {
+                  setState(() {
+                    currentPage = 'Projects';
+                  });
+                  Navigator.of(context).pop();
+                },
               ),
               const Divider(),
-              const ListTile(
-                leading: Icon(Icons.accessibility_rounded),
-                title: Text("Experience", style: TextStyle(fontSize: 20)),
+              ListTile(
+                leading: const Icon(Icons.accessibility_rounded),
+                title: const Text("Experience", style: TextStyle(fontSize: 20)),
+                onTap: () {
+                  setState(() {
+                    currentPage = 'Experience';
+                  });
+                  Navigator.of(context).pop();
+                },
               ),
               const Divider(),
             ],
